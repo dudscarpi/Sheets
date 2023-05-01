@@ -1,0 +1,43 @@
+<mat-drawer-container class="mat-elevation-z8">
+  
+
+  <mat-toolbar *ngIf="authService.userData as user">
+    <img class="icon" src="../../../assets/sheets.png">
+    <div class="menu">
+      
+    <div class="textLink">
+      <a routerLink="/formulario" class="link">Formulário</a>
+    </div>
+    <div class="textLink">
+      <a routerLink="/uploadPlanilha" class="link">Upload</a>
+    </div>
+    <div class="textLink">
+      <a routerLink="/tabela" class="link">Tabela</a>
+    </div>
+    <div class="textLink">
+      <a routerLink="/download" class="link">Downlad</a>
+    </div>
+</div>
+
+    <span class="spacer"></span>
+
+    <div class="imgPerfil">
+    <img class="icon-profile" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+    alt="{{user.displayName}}">
+    </div>
+     <button [matMenuTriggerFor]="menu" mat-button>
+      <div class="menu-btn-wrapper menu-1">
+        <div class="nav-btn">
+          <span class="bar"></span>
+        </div>
+      </div>
+    </button>
+     <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/perfil">Perfil</button>
+      <button mat-menu-item routerLink="/boas-praticas">Boas Práticas</button>
+      <button mat-menu-item (click)="authService.SignOut()">Logout</button>
+    </mat-menu>
+   </mat-toolbar>
+
+
+</mat-drawer-container>

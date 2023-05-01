@@ -1,0 +1,40 @@
+.subtitulo{
+    text-align: center;
+    h4{
+        color: #304D63;
+        background-color: #8FB9AA;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        margin-bottom: 2em;
+    }
+}
+main{
+    display: flex;
+    justify-content: center;   
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .divider{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        mat-form-field{
+            width: 49%;
+            margin: 4px;
+        }
+    }
+
+   .buttons{
+    width: 50em;
+    margin: 4px;
+   }
+   #info{
+    color:#3D3D4E;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+   }
+}

@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+
+<div class="subtitulo"><h4>Formulário</h4></div>
+
+<main *ngIf="authService.userData as user">
+ 
+ <form class="form" [formGroup]="formRow" (ngSubmit)="solicitarRemocao(formRow.value)">
+
+  <div class="divider">
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput type="number" formControlName="ID" ngModel name="ID" maxlength="3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" placeholder="Ex: 33">
+      <mat-error>Valor inválido</mat-error>
+    </mat-form-field>
+
+     <mat-form-field>
+        <mat-label>Product</mat-label>
+        <input matInput type="number" formControlName="Product" ngModel name="Product" maxlength="6" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" placeholder="Ex: 220248">
+        <mat-error>Valor inválido</mat-error>
+      </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sku</mat-label>
+      <input matInput type="text" formControlName="Sku" ngModel name="Sku" maxlength="25" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" placeholder="Ex: Product_Cor_Tamanho">
+      <mat-error>Valor inválido</mat-error>
+    </mat-form-field>
+  </div>
+
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" formControlName="Nome" ngModel name="Nome" maxlength="14" placeholder="Ex: Perfume">
+      <mat-error>Valor inválido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Descricao</mat-label>
+      <input matInput type="text" formControlName="Descricao" ngModel name="Descricao" maxlength="250" placeholder="Ex: Perfume Cheiroso">
+      <mat-error>Valor inválido</mat-error>
+    </mat-form-field>
+
+    <div class="divider">
+         <mat-form-field>
+        <mat-label>Tamanho</mat-label>
+        <mat-select [ngModel]="tamanho" formControlName="Tamanho" name="Tamanho">
+          <mat-option *ngFor="let option of tamanho" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cor</mat-label>
+        <mat-select [ngModel]="cor" formControlName="Cor" name="Cor">
+          <mat-option *ngFor="let option of cor" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Imagem</mat-label>
+      <input matInput type="text" formControlName="Imagem" ngModel name="Imagem" maxlength="500" placeholder="Ex: Pendente">
+      <mat-error>Valor inválido</mat-error>
+    </mat-form-field>
+  
+ 
+    <div>
+      <button type="subimit" class="buttons" mat-raised-button color="accent" id="salvar" [disabled]="formRow.invalid">
+        Enviar Produto
+      </button>
+      <p id="info">Preencha todas as informações para liberar o acionamento do botão</p>
+    </div>
+      
+  </form> 
+  
+</main>

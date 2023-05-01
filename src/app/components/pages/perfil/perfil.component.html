@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="subtitulo"><h4>Minha Conta</h4></div>
+<main *ngIf="authService.userData as user">
+
+    <img class="icon-profile" src="{{(user.photoURL) ? user.photoURL : '../../../../../../assets/no-profile.png '}}"
+    alt="{{user.displayName}}">
+      
+    <div class="dados">
+
+        <h3>O time de Loren Ipsun tem um <br>recadinho pra você <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong>!</h3>
+  
+        <p id="infos">Fizemos uma página de <a routerLink="#">Boas Práticas</a> só pra te guiar referente a utilização desse portal.<br>Lá também tem informações sobre como o cadastro de remoção deve ser feito. Mas deixamos alguns pontos aqui pois consideramos eles muito importantes</p>
+    </div>
+    
+</main>
+<app-footer></app-footer>

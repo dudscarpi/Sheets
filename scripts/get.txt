@@ -1,0 +1,26 @@
+function doGet() {
+  var doc = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = doc.getSheetByName('Sheets');
+  var values = sheet.getDataRange().getValues();
+
+  var output = [];
+
+  for(var i = 1; i < values.length; i++) {
+    var row = {};
+
+    row['ID'] = values[i][0];
+    row['Product'] = values[i][1];
+    row['Sku'] = values[i][2];
+    row['Nome'] = values[i][3];
+    row['Descricao'] = values[i][4];
+    row['Tamanho'] = values[i][5];
+    row['Cor'] = values[i][6];
+    row['Imagem'] = values[i][7];
+
+    output.push(row);
+  }
+
+  return ContentService
+      .createTextOutput(JSON.stringify({'Row': output}))
+      .setMimeType(ContentService.MimeType.JSON);
+}

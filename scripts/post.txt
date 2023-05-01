@@ -1,0 +1,32 @@
+function doPost(req) {
+  var doc = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = doc.getSheetByName('Sheets');
+
+  const { postData: { contents } = {} } = req;
+
+  const employees = JSON.parse(contents);
+
+  if (Array.isArray(employees) && employees.length > 0 && Array.isArray(employees[0])) {
+    // Se o conteúdo recebido for um array de arrays, pegar todos os valores
+    sheet.getRange(sheet.getLastRow() + 1, 1, employees.length, employees[0].length).setValues(employees);
+  } else if (Array.isArray(employees) && employees.length > 0 && typeof employees[0] === 'object') {
+    // Se o conteúdo recebido for um array de objetos, pegar os valores individuais
+    employees.forEach(employee => {
+      const { ID, Product, Sku, Nome, Descricao, Tamanho, Cor, Imagem } = employee;
+      sheet.appendRow([ID, Product, Sku, Nome, Descricao, Tamanho, Cor, Imagem]);
+    });
+  } else {
+    // Se o conteúdo recebido for um objeto, pegar os valores individuais
+    const { ID, Product, Sku, Nome, Descricao, Tamanho, Cor, Imagem } = employees;
+    sheet.appendRow([ID, Product, Sku, Nome, Descricao, Tamanho, Cor, Imagem]);
+  }
+
+  // Crie a resposta com o conteúdo e os cabeçalhos adequados para as configurações de CORS
+  var output = ContentService.createTextOutput(JSON.stringify(employees));
+  output.setMimeType(ContentService.MimeType.JSON);
+  output.setHeader('Access-Control-Allow-Origin', '*'); // Permitir qualquer origem (pode ajustar para o domínio específico do cliente)
+  output.setHeader('Access-Control-Allow-Methods', 'POST'); // Permitir apenas o método POST
+  output.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Permitir apenas o cabeçalho Content-Type
+
+  return output;
+}

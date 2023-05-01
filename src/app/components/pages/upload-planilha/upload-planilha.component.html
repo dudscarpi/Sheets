@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+<div class="subtitulo"><h4>Upload de Planilha</h4></div>
+<main>
+
+  <form class="upload">
+    <div class="upload__body" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+      <i class="ri-file-upload-line"></i>
+      <p>Arraste o arquivo aqui para fazer o upload</p>
+    </div>
+    <input type="file" class="upload__input" accept=".xlsx" (change)="onFileSelected($event)">
+    <button class="upload__button" (click)="EnviandoArquivo($event)">Enviar</button>
+  </form>
+  
+    
+<div>
+  <p id="paragrafo">Atenção: Não adicionar cabeçalho à planilha!</p>
+</div>
+
+
+
+</main>
+    

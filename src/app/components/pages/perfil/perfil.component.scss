@@ -1,0 +1,42 @@
+.subtitulo{
+    text-align: center;
+    h4{
+        color: #304D63;
+        background-color: #8FB9AA;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        margin-bottom: 2em;
+    }
+}
+main{
+    display: flex;
+    flex-direction: column;
+    min-height: 90%;
+    justify-content: center;
+    align-items: center;
+    color:#3D3D4E;
+    .icon-profile{
+        margin: 20px 0 20px 0;
+        width: 130px;
+        height: 130px;
+        border-radius: 100%;
+        vertical-align: middle;
+        border: none;
+        background: transparent;
+    }
+    .dados{
+        text-align: center;
+        .img-thumbnail {
+            width: 15em;
+            margin-top: .5em;
+            margin-bottom: .5em;
+        }
+        #infos{
+            font-style: italic;
+        }
+    }
+    .carrossel{
+        height: 30em;
+    }
+
+}

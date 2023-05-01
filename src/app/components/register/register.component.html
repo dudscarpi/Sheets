@@ -1,0 +1,14 @@
+  <section class="grid-container">
+    <div class="text-container">
+      <h1>Cadastre-se <br> para ter <br> acesso ao <br> Portal</h1>
+    </div>
+    <main class="form-container">
+      <form action="">
+        <button type="button" matTooltip="" id="login-google" (click)="authService.GoogleAuth()">
+          <img src="/assets/google.svg" alt="" id="img-google"><span>Cadastre-se com Google</span>
+        </button>
+      </form>
+
+      <p id="entre">Já tem uma conta? <a routerLink="/login">Entre</a></p>
+    </main>
+  </section>  

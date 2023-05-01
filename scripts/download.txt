@@ -1,0 +1,32 @@
+function Download() {
+  var planilha = SpreadsheetApp.getActiveSpreadsheet();
+  var abaPrincipal = planilha.getSheetByName("Sheets");
+  
+  if (abaPrincipal) {
+    var ultimaLinha = abaPrincipal.getLastRow();
+    var area = abaPrincipal.getRange("A1:H" + ultimaLinha);
+    
+    SpreadsheetApp.flush();
+    Utilities.sleep(3000);
+    
+    var url = planilha.getUrl().replace(/edit$/, '') + 'export?exportFormat=xlsx';
+    
+    var html = "<script>window.open('" + url + "');google.script.host.close();</script>";
+    
+    var userInterface = HtmlService.createHtmlOutput(html)
+      .setHeight(10)
+      .setWidth(120);
+    
+    SpreadsheetApp.getUi().showModalDialog(userInterface,"Baixando Arquivo...");
+    
+    SpreadsheetApp.flush();
+    Utilities.sleep(6000);
+    
+    abaPrincipal.activate();
+    
+    SpreadsheetApp.flush();
+    Utilities.sleep(1000);
+  } else {
+    Logger.log("A aba 'Sheets' não foi encontrada na planilha ativa.");
+  }
+}

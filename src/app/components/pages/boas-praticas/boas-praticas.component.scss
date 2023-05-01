@@ -1,0 +1,51 @@
+.subtitulo{
+  text-align: center;
+  h4{
+      color: #304D63;
+      background-color: #8FB9AA;
+      padding-top: .5em;
+      padding-bottom: .5em;
+      margin-bottom: 2em;
+  }
+}
+
+
+main{
+    min-height: 40em;
+    .mat-mdc-form-field + .mat-mdc-form-field {
+        margin-left: 8px;
+      }
+      .questions{
+        margin: 50px 100px 50px 100px;
+      }
+      h6{
+        color: #000;
+
+        font-size: 25px;
+        text-decoration: underline;
+        margin: 50px 0 50px 0;
+        text-align: center;
+      }
+
+article{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  .texto{
+    width: 30%;
+    text-align: center;
+    margin: 20px;
+  }
+  .imagem{
+    width: 65%;
+    margin: 30px;
+  }
+}
+#text{
+  color: #3D3D4E;
+  text-align: center;
+  margin: 30px;
+}
+}
+

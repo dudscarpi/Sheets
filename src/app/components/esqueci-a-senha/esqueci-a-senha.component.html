@@ -1,0 +1,23 @@
+<section class="grid-container">
+  <main class="form-container">
+    <form action="" class="form-inputs">
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input type="email" #passwordResetEmail placeholder="Seu e-mail aqui" matInput autocomplete="off" formControlName="email" name="email">
+        <mat-error>
+          <span>Este campo é obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+        <button mat-stroked-button type="submit" (click)="authService.ForgotPassword(passwordResetEmail.value)">Recuperar senha
+          <mat-icon>login</mat-icon>
+        </button>
+    </form>
+
+    <p id="entre">Se lembrou ou já redefiniu sua senha? <a routerLink="/login">Faça Login</a></p>
+  </main>
+
+  <div class="text-container">
+    <h1>Reset <br> sua senha <br> para ter <br> acesso ao <br> Portal</h1>
+  </div>
+
+</section>  

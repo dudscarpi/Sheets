@@ -1,0 +1,22 @@
+<main>
+      <h1>Obrigadong  por se registrar!</h1>
+
+      <div *ngIf="authService.userData as user">
+        <p class="paragraf">
+          Enviamos um e-mail de confirmação para <span id="email">{{ user.email }}</span><br>
+          Verifique em sua caixa de entrada ou span.
+        </p>
+      </div>
+
+        <p class="paragraf">
+        <strong>Atenção: Sem esta verificação concluída, não será possivel acessar nossa plataforma!</strong>
+      </p>
+
+      <button matTooltip="Reenviar e-mail de Verificação" (click)="authService.SendVerificationMail()" type="submit" mat-stroked-button>Reenviar email
+        <mat-icon>email</mat-icon>
+      </button>
+
+      <p id="entre">Já tem uma conta ou já validou seu email? <a routerLink="/login">Entre</a></p>
+ 
+</main>
+

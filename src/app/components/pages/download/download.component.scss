@@ -1,0 +1,24 @@
+.subtitulo{
+    text-align: center;
+    h4{
+        color: #304D63;
+        background-color: #8FB9AA;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        margin-bottom: 2em;
+    }
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30em;
+
+    button{
+        width: 200px;
+        height: 100px;
+        font-size: 20px;
+    }
+}
+
+

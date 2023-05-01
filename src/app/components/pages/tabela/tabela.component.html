@@ -1,0 +1,161 @@
+<app-navbar></app-navbar>
+
+<div class="subtitulo">
+  <h4>Tabela</h4>
+</div>
+
+<main>
+
+  <div class="content">
+    <div class="loader" *ngIf="row === undefined; else principal">
+
+      <h4>{{ carregando == true ? 'Planilha não encontrada!' : 'Carregando...' }}</h4>
+      <mat-progress-bar mode="indeterminate" color="accent" *ngIf="carregando == false"></mat-progress-bar>
+    </div>
+
+
+    <ng-template #principal>
+      <section>
+        <mat-form-field>
+          <mat-label>Pesquisar...</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ProductID" #input>
+
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+
+          <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let s">{{ s.ID }}
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Product">
+            <th mat-header-cell *matHeaderCellDef>Product</th>
+            <td mat-cell *matCellDef="let s">{{ s.Product }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Sku">
+            <th mat-header-cell *matHeaderCellDef>Sku</th>
+            <td mat-cell *matCellDef="let s">{{ s.Sku }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Nome">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let s">{{ s.Nome }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Descricao">
+            <th mat-header-cell *matHeaderCellDef>Descricao</th>
+            <td mat-cell *matCellDef="let s">{{ s.Descricao }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Cor">
+            <th mat-header-cell *matHeaderCellDef>Cor</th>
+            <td mat-cell *matCellDef="let s">{{ s.Cor }}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="Tamanho">
+            <th mat-header-cell *matHeaderCellDef>Tamanho</th>
+            <td mat-cell *matCellDef="let s">{{ s.Tamanho }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Imagem">
+            <th mat-header-cell *matHeaderCellDef>Imagem</th>
+            <td>alo</td>
+            <td mat-cell *matCellDef="let s">{{ s.Imagem }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+          <tr mat-row *matRowDef="let row; columns: colunas"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">Nenhum dado correspondente ao filtro: "{{input.value}}"</td>
+          </tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+      </section>
+    </ng-template>
+  </div>
+</main>
+
+
+
+<!-- <app-navbar></app-navbar>
+
+<div class="subtitulo">
+  <h4>Tabela</h4>
+</div>
+
+<main>
+
+  <div class="content">
+    <div class="loader" *ngIf="row === undefined; else principal">
+
+      <h4>{{ carregando == true ? 'Planilha não encontrada!' : 'Carregando...' }}</h4>
+      <mat-progress-bar mode="indeterminate" color="accent" *ngIf="carregando == false"></mat-progress-bar>
+    </div>
+
+
+    <ng-template #principal>
+      <section>
+        
+        <input type="text" class="form-control" (keyup)="applyFilter($event.target)" placeholder="Ex. ProductID" aria-label="Search">
+
+
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product</th>
+              <th>Sku</th>
+              <th>Nome</th>
+              <th>Descricao</th>
+              <th>Cor</th>
+              <th>Tamanho</th>
+              <th>Imagem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of dataSource">
+              <td>{{ row.ID }}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+                    style="width: 45px; height: 45px" />
+                  <div class="ms-3">
+                    <p class="text-muted mb-0">{{ row.Imagem }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>{{ row.Product }}</td>
+              <td>{{ row.Sku }}</td>
+              <td>{{ row.Nome }}</td>
+              <td>{{ row.Descricao }}</td>
+              <td>{{ row.Cor }}</td>
+              <td>{{ row.Tamanho }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <button class="page-link" aria-label="Previous" (click)="paginator.previousPage()" [disabled]="paginator?.hasPrevious() === false">
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" aria-label="Next" (click)="paginator.nextPage()" [disabled]="paginator?.hasNext() === false">
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </ng-template>
+  </div>
+</main>
+ -->
